@@ -1,6 +1,7 @@
 const express = require('express');
 const db = require("./utils/database");
 require('dotenv').config();
+const cors = require('cors');
 const initModels = require("./models/initModels");
 
 initModels();
@@ -20,14 +21,14 @@ db.sync()
 
 const app = express();
 
+app.use(cors());
+app.use(express.json());
+ app.use(userRoutes);
+ app.use(todoRoutes);
 
 app.get('/',  (req, res) =>{
     res.send('Servidor Ok')
 });
-
-app.use(express.json());
- app.use(userRoutes);
- app.use(todoRoutes);
  
 app.listen(PORT, () => {
     console.log(`Servidor escuchando en el puerto ${PORT}`);
