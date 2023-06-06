@@ -24,7 +24,7 @@ const getTodosWhitId = async (req, res) => {
 
 const getAllTodosUsers = async (req, res) => { // para traerme todas las tareas creadas, con sus categorias y usuario que la creo
     try {
-        const AllTodos = await TodosService.findAll();
+        const AllTodos = await Todos.findAll();
         res.json(AllTodos);
     } catch (error){
         res.status(400).json(error)
@@ -55,11 +55,23 @@ const deleteTodo = async (req, res) => {
     }
 };
 
+const deleteCategory = async (req, res) => {
+    try {
+        const {id} = req.params;
+        await TodosService.deleteCategories(id);
+        res.status(204).send();
+
+    }catch (error) {
+        res.status(400).json(error);
+    }
+};
+
 module.exports = {
 createNewTodo,
 getTodosWhitId,
 updateTodo,
 deleteTodo,
-getAllTodosUsers
+getAllTodosUsers,
+deleteCategory
 
 };

@@ -54,6 +54,16 @@ static async delete(id){
         throw error;
     }
 }
+static async deleteCategories(id){
+    try{
+        const categoryDelete = await Categories.destroy({
+            where: {id}
+        });
+        return categoryDelete;
+    } catch (error) {
+        throw error;
+    }
+}
 
 };
 
