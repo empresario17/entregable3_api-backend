@@ -24,7 +24,7 @@ const getTodosWhitId = async (req, res) => {
 
 const getAllTodosUsers = async (req, res) => { // para traerme todas las tareas creadas, con sus categorias y usuario que la creo
     try {
-        const AllTodos = await Todos.findAll();
+        const AllTodos = await TodosService.findAll();
         res.json(AllTodos);
     } catch (error){
         res.status(400).json(error)
