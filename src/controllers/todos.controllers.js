@@ -1,3 +1,4 @@
+const Categories = require('../models/categories.models');
 const Todos = require('../models/todos.models');
 const TodosService = require('../services/todos.service');
 
@@ -30,7 +31,14 @@ const getAllTodosUsers = async (req, res) => { // para traerme todas las tareas 
         res.status(400).json(error)
     }
 };
-
+const getAllCategories = async (req, res) => { // para traerme todas las categorias creadas
+    try {
+        const AllCategories = await Categories.findAll();
+        res.json(AllCategories);
+    } catch (error){
+        res.status(400).json(error)
+    }
+};
 const updateTodo = async (req, res) => {
     try {
         const {id} = req.params;
@@ -72,6 +80,7 @@ getTodosWhitId,
 updateTodo,
 deleteTodo,
 getAllTodosUsers,
-deleteCategory
+deleteCategory,
+getAllCategories
 
 };

@@ -1,6 +1,6 @@
 const { Router } = require("express");
 
-const { createNewTodo, updateTodo, deleteTodo, getTodosWhitId, getAllTodosUsers, deleteCategory, } = require('../controllers/todos.controllers');
+const { createNewTodo, updateTodo, deleteTodo, getTodosWhitId, getAllTodosUsers, deleteCategory, getAllCategories, } = require('../controllers/todos.controllers');
 const { posCategories } = require("../controllers/categories.controllers");
 
 const router = Router();
@@ -18,5 +18,7 @@ router.get('/api/alltodos/users', getAllTodosUsers);
 router.post('/api/categories/created', posCategories);
 
 router.delete('/api/delete/categories/:id', deleteCategory);
+
+router.get('/api/allcategories', getAllCategories );
 
 module.exports = router;
